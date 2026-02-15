@@ -2,12 +2,12 @@
 
 Goal of this repository is to collect some examples of ollama usage.
 
-### __Installation__
+### __Ollama installation__
 ```bash
 winget install --id Ollama.Ollama
 ```
 
-### __Using CLI__
+### __Using Ollama CLI__
 Run model
 ```bash
 ollama run phi4-mini:latest
@@ -20,13 +20,13 @@ Show model info
 ```bash
 ollama show phi4-mini
 ```
-Remove a model
-```bash
-ollama rm gemma3:4b
-```
 Pull model from remote registry (default ollama)
 ```bash
 ollama pull gemma3:4b
+```
+Remove a model
+```bash
+ollama rm gemma3:4b
 ```
 Get the list of models run
 ```bash
@@ -48,7 +48,7 @@ $a = curl http://localhost:11434/api/chat -d '{
 }' | ConvertFrom-Json
 ```
 
-### __Custom model__
+### __Ollama Custom model__
 Build the custom model
 ```bash
 ollama create phi4-mini-custom -f Modelfile
@@ -56,4 +56,4 @@ ollama create phi4-mini-custom -f Modelfile
 ollama run phi4-mini-custom --verbose "Can you make a simple example of rest api handler only get method? No explanation required."
 ```
 
-### .Net application
+### __[Ollama .Net application](./dotnet)__
