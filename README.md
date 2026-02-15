@@ -1,6 +1,6 @@
 # AI Development Workshop
 
-Goal of this repository is to collect some examples of ollama usage.
+Goal of this repository is to collect some examples for local inference.
 
 ### __Ollama installation__
 ```bash
