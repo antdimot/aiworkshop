@@ -8,17 +8,25 @@ winget install --id Ollama.Ollama
 ```
 
 ### __Using Ollama CLI__
-Run model
+Run model (interactive mode)
 ```bash
 ollama run phi4-mini:latest
+```
+Run model (single request)
+```bash
+ollama run phi4-mini:latest "hello"
+```
+Show model info
+```bash
+ollama show phi4-mini
 ```
 Get the list of local models
 ```bash
 ollama list
 ```
-Show model info
+Get the list of models run
 ```bash
-ollama show phi4-mini
+ollama ps
 ```
 Pull model from remote registry (default ollama)
 ```bash
@@ -28,15 +36,18 @@ Remove a model
 ```bash
 ollama rm gemma3:4b
 ```
-Get the list of models run
-```bash
-ollama ps
-```
 Get tokens performance results (useful for cost estimation)
 ```bash
 ollama run phi4-mini --verbose "Can you make a simple example of rest api handler only get method? No explanation required."
 ```
-cURL request
+Build and run a custom model
+```bash
+ollama create phi4-mini-custom -f Modelfile
+
+ollama run phi4-mini-custom --verbose "Can you make a simple example of rest api handler only get method? No explanation required."
+```
+
+|__cURL request__
 ```powershell
 $a = curl http://localhost:11434/api/chat -d '{
   "model": "phi4-mini",
@@ -48,12 +59,6 @@ $a = curl http://localhost:11434/api/chat -d '{
 }' | ConvertFrom-Json
 ```
 
-### __Ollama Custom model__
-Build the custom model
-```bash
-ollama create phi4-mini-custom -f Modelfile
 
-ollama run phi4-mini-custom --verbose "Can you make a simple example of rest api handler only get method? No explanation required."
-```
 
 ### __[Ollama .Net application](./dotnet)__
