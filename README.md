@@ -8,6 +8,10 @@ winget install --id Ollama.Ollama
 ```
 
 ### __Using Ollama CLI__
+Run serve
+```bash
+ollama serve
+```
 Run model (interactive mode)
 ```bash
 ollama run phi4-mini:latest
