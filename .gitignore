@@ -103,3 +103,4 @@ wwwroot/lib/
 ############################
 artifacts/
 
+.DS_Store

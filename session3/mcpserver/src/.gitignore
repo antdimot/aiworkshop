@@ -1,0 +1,66 @@
+## Build results
+bin/
+obj/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio Code
+.vscode/
+.history/
+
+## Rider
+.idea/
+
+## Logs
+*.log
+logs/
+
+## NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## Dotnet
+project.lock.json
+project.assets.json
+*.deps.json
+*.targets
+*.props
+
+## Coverage/Testing
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+## Cache
+*.cache
+**/obj/**/rpswa.dswa.cache.json
+**/obj/**/rjsmrazor.dswa.cache.json
+**/obj/**/rjsmcshtml.dswa.cache.json
+**/obj/**/staticwebassets.build.json
+**/obj/**/staticwebassets.build.endpoints.json
+**/bin/**/MCPServer.staticwebassets.endpoints.json
+**/bin/**/staticwebassets/
+
+## Configuration secrets
+secrets.json
+appsettings.*.local.json
+
+## Docker
+**/.dockerignore
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Certificates and sensitive assets
+setup/config/nginx/certs/
+
