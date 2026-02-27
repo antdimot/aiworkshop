@@ -1,3 +1,0 @@
-# AI Development Workshop
-
-//todo:

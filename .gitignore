@@ -103,4 +103,23 @@ wwwroot/lib/
 ############################
 artifacts/
 
+## Cache
+*.cache
+**/obj/**/rpswa.dswa.cache.json
+**/obj/**/rjsmrazor.dswa.cache.json
+**/obj/**/rjsmcshtml.dswa.cache.json
+**/obj/**/staticwebassets.build.json
+**/obj/**/staticwebassets.build.endpoints.json
+**/bin/**/MCPServer.staticwebassets.endpoints.json
+**/bin/**/staticwebassets/
+
+## Configuration secrets
+secrets.json
+appsettings.*.local.json
+
+## Docker
+**/.dockerignore
+
+## OS generated files
 .DS_Store
+Thumbs.db

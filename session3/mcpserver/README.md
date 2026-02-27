@@ -16,13 +16,13 @@ The MCP server provides the data on behalf of user prompt like:
 
 ## Setup and run
 
-1) Prerequisites:
+Prerequisites:
 - [DOTNET 10 SDK](https://dotnet.microsoft.com/)
 - [VSCODE](https://code.visualstudio.com/)
 - [DOCKER](https://www.docker.com/)
 
 
-2) Define the environment's parameters by replacing user and password information in __.env__ and properties file located into the setup folder:
+1) Define the environment's parameters by replacing user and password information in __.env__ and properties file located into the setup folder:
 ```
 ENV_NAME=DemoMCP
 
@@ -39,7 +39,12 @@ PGADMIN_EMAIL=<<pgadmin-user-here>>
 PGADMIN_PASSWORD=<<pgadmin-password-here>>
 ```
 
-3) Set the ConnectionStrings in __appsettings.Development.json__ file located into src/MCPServer folder (use the same postgres credential info used on step 1):
+2) Create into the folder setup/config/nginx/certs the server certification files for nginx with following command:
+```shell
+openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes -keyout ./config/nginx/certs/server.key -out ./config/nginx/certs/server.crt -subj '/CN=localhost'
+```
+
+3) Set the ConnectionStrings in __appsettings.Development.json__ file located into src/ folder (use the same postgres credential info used on step 1):
 ```json
 {
   "Logging": {
@@ -69,7 +74,7 @@ Creating DemoMCP_pgadmin ... done
 
 5) Start the MCPServer application
 ```shell
-user@PC:cd src/MCPServer
+user@PC:cd src/
 user@PC:dotnet run
 
 user@PC:~/DemoMCP/src/MCPServer$ dotnet run
@@ -85,8 +90,7 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: /home/adimo/workspaces/DemoMCP/src/MCPServer
 ```
 
-## Try the MCP Server
-
-To use the MCP Server you need to register it to VSCODE by using the endpoint __http://localhost:5186__
+6) To use the MCP Server you need to register it to VSCODE by using the endpoint __http://localhost:5186__
+Access to pgadmin at the endpoint __https://localhost/pgadmin__ and use the credentials defined into .env file
 
 ![alt text](doc/images/vscode1.jpg)
