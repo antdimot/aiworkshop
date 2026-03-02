@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MCPServer.Models;
 
-namespace MCPServer.Data;
+namespace MCPServer;
 
 public class AppDbContext : DbContext
 {
@@ -33,6 +33,7 @@ public class AppDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Code).HasColumnName("code").HasMaxLength(50).IsRequired();
+            entity.Property(e => e.Type).HasColumnName("type").HasMaxLength(100).IsRequired();
             entity.Property(e => e.Title).HasColumnName("title").HasMaxLength(100).IsRequired();
             entity.Property(e => e.Description).HasColumnName("description").IsRequired();
             entity.Property(e => e.Price).HasColumnName("price");

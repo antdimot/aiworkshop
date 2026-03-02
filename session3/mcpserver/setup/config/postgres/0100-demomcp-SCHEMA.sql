@@ -15,6 +15,7 @@ CREATE TABLE public.customer (
 CREATE TABLE public.product (
     id                BIGSERIAL      NOT NULL,
     code              VARCHAR(50)    NOT NULL,
+    type              VARCHAR(100)   NOT NULL,
     title             VARCHAR(100)   NOT NULL,
     "description"     TEXT           NOT NULL,
     price             NUMERIC(10,2)  NOT NULL DEFAULT 0.00,
