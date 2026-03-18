@@ -1,9 +1,9 @@
 # MCP Server demo
 
-The goal of this project is showing how to run a MCP server by using .NET
+The goal of this project is showing how to build a MCP server by using .NET
 
 ## Scenario
-The use case scenario is managing information stored into Postgres database about customners, products and orders.
+The use case scenario is managing information stored into Postgres database about customers, products and orders.
 
 The MCP server provides the data on behalf of user prompt like:
 ```shell
@@ -11,6 +11,8 @@ The MCP server provides the data on behalf of user prompt like:
     tell me the most expensive order
     how many USB-C Hub has been ordered ?
     give me the customer list without orders
+    suggest a new product for the customer Jane Smith
+    add new order
     .....
 ```
 
@@ -26,7 +28,7 @@ Prerequisites:
 ```
 ENV_NAME=DemoMCP
 
-NGINX_RELEASE= 1.29.3
+NGINX_RELEASE=1.29.3
 NGINX_HOSTPORT=8081
 
 POSTGRES_RELEASE=18.1
