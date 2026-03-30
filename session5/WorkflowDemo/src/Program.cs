@@ -24,7 +24,7 @@ public static class Program
     {
         // Set up the Azure OpenAI client.
         var endpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT") ?? "https://models.github.ai/inference";
-        var apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY") ?? "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";
+        var apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY");
         var deploymentName = Environment.GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_NAME") ?? "openai/gpt-4o-mini";
         var chatClient = new AzureOpenAIClient(new Uri(endpoint), new AzureKeyCredential(apiKey)).GetChatClient(deploymentName).AsIChatClient();
 
