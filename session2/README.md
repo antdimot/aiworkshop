@@ -1,60 +1,14 @@
-### __Ollama installation__
-```bash
-winget install --id Ollama.Ollama
-```
+## Ollama
 
-### __Using Ollama CLI__
-Run serve
-```bash
-ollama serve
-```
-Run model (interactive mode)
-```bash
-ollama run phi4-mini:latest
-```
-Run model (single request)
-```bash
-ollama run phi4-mini:latest "hello"
-```
-Show model info
-```bash
-ollama show phi4-mini
-```
-Get the list of local models
-```bash
-ollama list
-```
-Get the list of models run
-```bash
-ollama ps
-```
-Pull model from remote registry (default ollama)
-```bash
-ollama pull gemma3:4b
-```
-Remove a model
-```bash
-ollama rm gemma3:4b
-```
-Get tokens performance results (useful for cost estimation)
-```bash
-ollama run phi4-mini --verbose "Can you make a simple example of rest api handler only get method? No explanation required."
-```
-Build and run a custom model
-```bash
-ollama create phi4-mini-custom -f Modelfile
+See [ollama/README.md](ollama/README.md) for installation, CLI usage, and cURL examples.
 
-ollama run phi4-mini-custom --verbose "Can you make a simple example of rest api handler only get method? No explanation required."
-```
+## LM Studio
 
-|__cURL request__
-```powershell
-$a = curl http://localhost:11434/api/chat -d '{
-  "model": "phi4-mini",
-  "messages": [{
-    "role": "user",
-    "content": "Hello"
-  }],
-  "stream": false
-}' | ConvertFrom-Json
+1. Download and install [LM Studio](https://lmstudio.ai/).
+2. Load a model (e.g. `google/gemma-4-e2b`) and start the local server on port 1234.
+3. Run the demo app with the `--lmstudio` flag:
+
+```bash
+cd DemoApp
+dotnet run -- --lmstudio
 ```

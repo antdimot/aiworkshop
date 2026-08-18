@@ -1,8 +1,20 @@
 ﻿using Microsoft.Extensions.AI;
 using OllamaSharp;
+using OpenAI;
+using System.ClientModel;
 
-IChatClient chatClient =
-    new OllamaApiClient(new Uri("http://localhost:11434/"), "phi4-mini");
+var useLmStudio = args.Contains("--lmstudio");
+
+var model = "google/gemma-4-e2b";
+
+IChatClient chatClient = useLmStudio
+    ? new OpenAIClient(
+              new ApiKeyCredential("lm-studio"),
+              new OpenAIClientOptions { Endpoint = new Uri("http://localhost:1234/v1") })
+          .GetChatClient(model).AsIChatClient()
+    : new OllamaApiClient(new Uri("http://localhost:11434/"), model);
+
+Console.WriteLine(useLmStudio ? "Backend: LM Studio (http://localhost:1234)" : "Backend: Ollama (http://localhost:11434)");
 
 // Start the conversation with context for the AI model
 List<ChatMessage> chatHistory = new();

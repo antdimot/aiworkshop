@@ -1,5 +1,10 @@
 # REALESE NOTES
 
+## (12/08/2026)
+- update outdated packages
+- add lmstudio support
+- add ollama support
+
 ## (26/02/2026)
 - update .net sdk to version 10
 - update mcp sdk to version1.0
