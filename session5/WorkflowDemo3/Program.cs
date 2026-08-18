@@ -1,11 +1,14 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
+using System.ClientModel;
 using System.Text.Json;
 using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
+using OllamaSharp;
+using OpenAI;
 
 namespace WorkflowDemo2;
 
@@ -20,13 +23,26 @@ namespace WorkflowDemo2;
 /// </remarks>
 public static class Program
 {
-    private static async Task Main()
+    private static async Task Main(string[] args)
     {
-        // Set up the Azure OpenAI client.
-        var endpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT") ?? "https://adm-openai.openai.azure.com/";
-        var apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY") ?? "";
-        var deploymentName = Environment.GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_NAME") ?? "gpt-4.1-nano";
-        var chatClient = new AzureOpenAIClient(new Uri(endpoint), new AzureKeyCredential(apiKey)).GetChatClient(deploymentName).AsIChatClient();
+        var useLmStudio = args.Contains("--lmstudio");
+
+        var model = "google/gemma-4-e2b";
+
+        IChatClient chatClient = useLmStudio
+            ? new OpenAIClient(
+                    new ApiKeyCredential("lm-studio"),
+                    new OpenAIClientOptions { Endpoint = new Uri("http://localhost:1234/v1") })
+                .GetChatClient(model).AsIChatClient()
+            : new OllamaApiClient(new Uri("http://localhost:11434/"), model);
+
+        Console.WriteLine(useLmStudio ? "Backend: LM Studio (http://localhost:1234)" : "Backend: Ollama (http://localhost:11434)");
+        // // Set up the Azure OpenAI client.
+        // // Set up the Azure OpenAI client.
+        // var endpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT") ?? "https://adm-openai.openai.azure.com/";
+        // var apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY") ?? "";
+        // var deploymentName = Environment.GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_NAME") ?? "gpt-4.1-nano";
+        // var chatClient = new AzureOpenAIClient(new Uri(endpoint), new AzureKeyCredential(apiKey)).GetChatClient(deploymentName).AsIChatClient();
 
         Console.Write("Choose workflow type ('handoffs', 'groupchat'): ");
         switch (Console.ReadLine())
