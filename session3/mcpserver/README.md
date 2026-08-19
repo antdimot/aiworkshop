@@ -28,15 +28,15 @@ Prerequisites:
 ```
 ENV_NAME=DemoMCP
 
-NGINX_RELEASE=1.29.3
+NGINX_RELEASE=1.31
 NGINX_HOSTPORT=8081
 
-POSTGRES_RELEASE=18.1
+POSTGRES_RELEASE=18.6
 POSTGRES_USER=<<postgres-user-here>>
 POSTGRES_PASSWORD=<<postgres-password-here>>
 POSTGRES_DB=demomcp
 
-PGADMIN_RELEASE=9.10.0
+PGADMIN_RELEASE=9.17
 PGADMIN_EMAIL=<<pgadmin-user-here>>
 PGADMIN_PASSWORD=<<pgadmin-password-here>>
 ```
